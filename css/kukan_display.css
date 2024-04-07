@@ -1,0 +1,142 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(to bottom, #cacaca, #fff);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.item {
+  width: 50em;
+  text-align: center;
+}
+
+.kukanInfoButton {
+  position: absolute;
+  width: 10%;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  border-image: linear-gradient(#f6b73c, #4d9f0c) 30;
+}
+
+.ownerAddressDisplay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  width: 50vw;
+  margin: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border: .1rem solid;
+  border-color: rgb(30, 0, 0);
+  border-radius: 30px;
+}
+
+.ownerAddressDisplayText {
+  font-size: 2vw;
+}
+
+.closeButton {
+  width: 100%;
+  padding: 5rem;
+  font-weight: 600;
+  border: .1rem solid;
+  border-color: rgb(30, 0, 0);
+  border-radius: 8px;
+}
+
+.kukanInfoMenu {
+  visibility: hidden;
+}
+
+.monacardInfoWindow {
+  visibility: hidden;
+}
+
+.menuContainer {
+  text-wrap: wrap;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: .1rem solid;
+  border-color: rgb(30, 0, 0);
+  border-radius: 8px;
+  text-align: center;
+  overflow-y: scroll;
+  inset: 0;
+}
+
+.kukanInfoWindow_div {
+  margin: 2rem;
+  padding: 1rem;
+  border: .1rem solid;
+  border-color: rgb(30, 0, 0);
+  border-radius: 8px; 
+}
+
+.monacardInfoWindow_div {
+  margin: 2rem;
+  padding: 1rem;
+  border: .1rem solid;
+  border-color: rgb(30, 0, 0);
+  border-radius: 8px; 
+}
+
+.item_title {
+  font-weight: 600;
+}
+
+.preview {
+  width: 80%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.scroll-bar::-webkit-scrollbar {
+  width: 16px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+  background: #276976;
+  border-radius: 8px;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 1000px) {
+  .menuContainer {
+    position: fixed;
+    width: 30%;
+    inset: unset;
+    bottom: 0;
+    right: 0;
+  }
+
+  .ownerAddressDisplay {
+    width: 20vw;
+  }
+
+  .ownerAddressDisplayText {
+    font-size: 0.8vw;
+  }
+}

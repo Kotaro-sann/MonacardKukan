@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>top</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/kukan_display.css">
+    <script type="module" src="./script/main.js"></script>
+  </head>
+  <body>  
+    <div id="canvas"></div>
+    <div class="container">
+      <div class="item">
+        <p>...読込み中</p>
+        <p>...loading</p>
+        <p>上手く読み込めない場合は再度リロードしてみて下さい。</p>
+      </div>
+    </div>
+    <div id="menu">
+      <div id="ownerAddressDisplay" class="ownerAddressDisplay">
+        <a id="ownerAddressDisplayText" class="ownerAddressDisplayText"></a>
+      </div>
+      <div>
+        <img class="kukanInfoButton" id="kukanInfoButton" src="./images/menu.png" />
+      </div>
+      <div class="kukanInfoMenu scroll-bar" id="kukanInfoMenu">
+        <div class="menuContainer">
+          <div class="kukanInfoWindow_div">
+            <p class="item_title">KUKAN INFO</p>
+          </div>
+          <div class="kukanInfoWindow_div">
+            <div class="item_title">KUKAN NAME</div>
+            <div id="kukan_name"></div>
+          </div>
+          <div class="kukanInfoWindow_div">
+            <div class="item_title">DESCRIPTION</div>
+            <div id="description"></div>
+          </div>
+          <div class="kukanInfoWindow_div">
+            <div class="item_title">OWNER NAME</div>
+            <div id="owner_name"></div>
+          </div>
+          <div class="kukanInfoWindow_div">
+            <div class="item_title">OWNER ADDRESS</div>
+            <div id="owner_adderss"></div>
+          </div>
+          <div class="item_title">
+            <button id="kukanInfoCloseButton" class="closeButton">CLOSE</button>
+          </div>
+        </div>
+      </div>
+      <div class="monacardInfoWindow scroll-bar" id="monacardInfoWindow">
+        <div class="menuContainer">
+          <div class="monacardInfoWindow_div">
+            <div >
+              <img class="preview" id="img_preview" />
+            </div>
+          </div>
+          <!-- <DispensesInfo /> -->
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">CARD NAME</div>
+            <div id="card_name"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">ASSET NAME</div>
+            <div id="asset_name"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">ASSET</div>
+            <div id="asset"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">ASSET GROUP</div>
+            <div id="assetgroup"></div>
+            <div id="nft"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">DESCRIPTION</div>
+            <div id="card_description"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">OWNER NAME</div>
+            <div id="card_owner_name"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">CARD URL</div>
+            <div id="imgur_url"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">IPFS CID</div>
+            <div id="cid"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">Registration Date</div>
+            <div id="regist_time"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">Update Date</div>
+            <div id="update_time"></div>
+          </div>
+          <div class="monacardInfoWindow_div">
+            <div class="item_title">
+              <a id="monacardLink" href="" target="_blank">Monacard[_↗]</a>
+            </div>
+          </div>
+          <div class="item_title">
+            <div id="cardInfoCloseButton" class="closeButton">CLOSE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

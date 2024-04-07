@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+@media (any-hover: hover) {
+  .connectButton {
+    transition: background-color 0.2s;
+  }
+
+  .connectButton:hover {
+    background-color: #ffffff;
+  }
+}
