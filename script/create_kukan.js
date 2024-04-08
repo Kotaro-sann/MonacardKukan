@@ -1,7 +1,7 @@
  /* MIT License Copyright © 2010-2024 three.js authors https://github.com/mrdoob/three.js/blob/dev/LICENSE */
-import * as THREE from "http://cdn.kotaroo.work/Three.js/r126/build/three.module.js";
-import { OrbitControls } from "http://cdn.kotaroo.work/Three.js/r126/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "http://cdn.kotaroo.work/Three.js/r126/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "https://cdn.kotaroo.work/Three.js/r126/build/three.module.js";
+import { OrbitControls } from "https://cdn.kotaroo.work/Three.js/r126/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "https://cdn.kotaroo.work/Three.js/r126/examples/jsm/loaders/GLTFLoader.js";
 import { updateAssetsWindowDiv } from "./assets_info_window.js";
 import { CONFIG } from "../config/config.js";
 
