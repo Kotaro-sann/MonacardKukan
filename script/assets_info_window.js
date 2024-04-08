@@ -31,7 +31,7 @@ export function updateAssetsWindowDiv(selected_monacard_info) {
   element_12.textContent = selected_monacard_info.imgur_url;
 
   const imgElement = document.getElementById("img_preview");
-  imgElement.src = BASE_URL_PREVIEW + selected_monacard_info.cid + "m";
+  imgElement.src = BASE_URL_PREVIEW + selected_monacard_info.cid + "l";
   imgElement.alt = selected_monacard_info.card_name;
 
 }
