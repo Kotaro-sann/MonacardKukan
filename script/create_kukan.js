@@ -183,6 +183,12 @@
  
    controls.target = new THREE.Vector3(0, 3, 0);
 
+   controls.mouseButtons = {
+     LEFT: THREE.MOUSE.ROTATE,
+     MIDDLE: THREE.MOUSE.PAN,
+     RIGHT: THREE.MOUSE.DOLLY
+   };
+
   }
  
  function loadObjects() {
