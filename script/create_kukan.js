@@ -320,6 +320,9 @@
  
            child.material.map = texture;
            child.material.transparent = true
+           child.material.polygonOffset = true;
+           child.material.polygonOffsetFactor = -1;
+           child.material.polygonOffsetUnits = -1;
  
            child.parent.position.set(item[2].position.x, item[2].position.y, item[2].position.z);
            child.parent.rotation.set(item[2].rotation.x, item[2].rotation.y, item[2].rotation.z);
