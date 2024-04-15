@@ -19,7 +19,7 @@ document.getElementById("kukanInfoButton").addEventListener("click", () => {
   }
 });
 
-document.getElementById("kukanInfoCloseButton").addEventListener("click", (e) => {
+document.getElementById("kukanInfoMenu").addEventListener("click", (e) => {
   const el = document.getElementById("kukanInfoMenu");
   if (el.style.visibility === "hidden") {
     el.style.visibility = "visible";
@@ -28,7 +28,7 @@ document.getElementById("kukanInfoCloseButton").addEventListener("click", (e) =>
   }
 });
 
-document.getElementById("cardInfoCloseButton").addEventListener("click", (e) => {
+document.getElementById("monacardInfoWindow").addEventListener("click", (e) => {
   const el = document.getElementById("monacardInfoWindow");
   if (el.style.visibility === "hidden") {
     el.style.visibility = "visible";
