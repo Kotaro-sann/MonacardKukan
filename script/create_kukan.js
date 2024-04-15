@@ -388,8 +388,7 @@
    rendererSetting();
  
    const canvas = document.getElementById("canvas");
-   canvas.addEventListener("click", handleMouseMoveCamera);
-   canvas.addEventListener("dblclick", handleMouseOpenInfoWindow);
+   canvas.addEventListener("click", handleMouseOpenInfoWindow);
    canvas.appendChild(renderer.domElement);
  
    const menu = document.getElementById("menu");
