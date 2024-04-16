@@ -183,6 +183,12 @@
  
    controls.target = new THREE.Vector3(0, 3, 0);
 
+   controls.mouseButtons = {
+     LEFT: THREE.MOUSE.ROTATE,
+     MIDDLE: THREE.MOUSE.PAN,
+     RIGHT: THREE.MOUSE.DOLLY
+   };
+
   }
  
  function loadObjects() {
@@ -320,6 +326,9 @@
  
            child.material.map = texture;
            child.material.transparent = true
+           child.material.polygonOffset = true;
+           child.material.polygonOffsetFactor = -1;
+           child.material.polygonOffsetUnits = -1;
  
            child.parent.position.set(item[2].position.x, item[2].position.y, item[2].position.z);
            child.parent.rotation.set(item[2].rotation.x, item[2].rotation.y, item[2].rotation.z);
@@ -379,8 +388,7 @@
    rendererSetting();
  
    const canvas = document.getElementById("canvas");
-   canvas.addEventListener("click", handleMouseMoveCamera);
-   canvas.addEventListener("dblclick", handleMouseOpenInfoWindow);
+   canvas.addEventListener("click", handleMouseOpenInfoWindow);
    canvas.appendChild(renderer.domElement);
  
    const menu = document.getElementById("menu");
