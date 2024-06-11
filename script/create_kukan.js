@@ -18,24 +18,6 @@
  const mouse = new THREE.Vector2();
  const highlightedObjects = [];
  
- function handleMouseMoveCamera(e) {
- 
-   const el = e.currentTarget;
-   const x = e.clientX - el.offsetLeft;
-   const y = e.clientY - el.offsetTop;
-   const w = el.offsetWidth;
-   const h = el.offsetHeight;
- 
-   mouse.x = (x / w) * 2 - 1;
-   mouse.y = -(y / h) * 2 + 1;
- 
-   raycaster.setFromCamera(mouse, camera);
-   const intersects = raycaster.intersectObjects(highlightedObjects);
-   if(intersects.length <= 0) return
- 
-   moveCameraInFrontOfObject(intersects[0].object);
- }
- 
  function handleMouseOpenInfoWindow(e) {
  
    const el = e.currentTarget;
@@ -126,46 +108,53 @@
    imgur_url: "",
  }
  
- function moveCameraInFrontOfObject(touch_object) {
-   // オブジェクトの位置を取得
-   const touchObjectPosition = new THREE.Vector3();
-   touch_object.getWorldPosition(touchObjectPosition);
- 
-   // カメラの新しい位置を計算
-   const cameraNewPosition = new THREE.Vector3();
-   touch_object.children[0].getWorldPosition(cameraNewPosition);
- 
-   camera.position.copy(cameraNewPosition);
-   camera.lookAt(touchObjectPosition);
-   controls.target = touchObjectPosition;
- 
- }
- 
- function createLight() {
-   //光源
-   // new THREE.SpotLight(色, 光の強さ, 距離, 照射角, ボケ具合, 減衰率)
-   const spotLight = new THREE.SpotLight(0xFFFFFF, 0.8, 100, Math.PI / 2, 1, 1.5);
-   spotLight.position.set(0, 30, 30);
-   spotLight.castShadow = true;
-   spotLight.shadow.mapSize.width = 512;
-   spotLight.shadow.mapSize.height = 512;
-   scene.add(spotLight);
- 
-   //光源2
-   const spotLight2 = new THREE.SpotLight(0xFFFFFF, 0.8, 100, Math.PI / 2, 1, 1.5);
-   spotLight2.position.set(40, 30, -80);
-   spotLight2.castShadow = true;
-   spotLight2.shadow.mapSize.width = 512;
-   spotLight2.shadow.mapSize.height = 512;
-   scene.add(spotLight2);
- 
-   // AmbientLight
-   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-   scene.add(ambientLight);
- 
-   // HemisphereLight
-   const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.0);
-   scene.add(hemisphereLight);
+ function createLight(select_kukan_data) {
+
+  const LIGHT_DATA = select_kukan_data.kukan[0].light_conf;
+
+  //光源
+  // new THREE.SpotLight(色, 光の強さ, 距離, 照射角, ボケ具合, 減衰率)
+  const spotLight_1 = new THREE.SpotLight();
+  spotLight_1.color.setHex(LIGHT_DATA.spotLight_1.spotLight_1_color);
+  spotLight_1.intensity = LIGHT_DATA.spotLight_1.spotLight_1_intensity; // 強さ
+  spotLight_1.distance = LIGHT_DATA.spotLight_1.spotLight_1_distance;
+  spotLight_1.angle = LIGHT_DATA.spotLight_1.spotLight_1_angle; // 照射角
+  spotLight_1.penumbra = LIGHT_DATA.spotLight_1.spotLight_1_penumbra; // ボケ
+  spotLight_1.decay = LIGHT_DATA.spotLight_1.spotLight_1_decay; // 減衰率
+  spotLight_1.position.set(LIGHT_DATA.spotLight_1.spotLight_1_position_x, LIGHT_DATA.spotLight_1.spotLight_1_position_y, LIGHT_DATA.spotLight_1.spotLight_1_position_z);
+
+  spotLight_1.castShadow = true;
+  spotLight_1.shadow.mapSize.width = 512;
+  spotLight_1.shadow.mapSize.height = 512;
+  scene.add(spotLight_1);
+
+  //光源2
+  const spotLight_2 = new THREE.SpotLight();
+  spotLight_2.color.setHex(LIGHT_DATA.spotLight_2.spotLight_2_color);
+  spotLight_2.intensity = LIGHT_DATA.spotLight_2.spotLight_2_intensity; // 強さ
+  spotLight_2.distance = LIGHT_DATA.spotLight_2.spotLight_2_distance;
+  spotLight_2.angle = LIGHT_DATA.spotLight_2.spotLight_2_angle; // 照射角
+  spotLight_2.penumbra = LIGHT_DATA.spotLight_2.spotLight_2_penumbra; // ボケ
+  spotLight_2.decay = LIGHT_DATA.spotLight_2.spotLight_2_decay; // 減衰率
+  spotLight_2.position.set(LIGHT_DATA.spotLight_2.spotLight_2_position_x, LIGHT_DATA.spotLight_2.spotLight_2_position_y, LIGHT_DATA.spotLight_2.spotLight_2_position_z);
+  spotLight_2.castShadow = true;
+  spotLight_2.shadow.mapSize.width = 512;
+  spotLight_2.shadow.mapSize.height = 512;
+  scene.add(spotLight_2);
+
+  // AmbientLight
+  const ambientLight = new THREE.AmbientLight();
+  ambientLight.color.setHex(LIGHT_DATA.ambientLight.ambientLight_color);
+  ambientLight.intensity = LIGHT_DATA.ambientLight.ambientLight_intensity;
+  scene.add(ambientLight);
+
+  // HemisphereLight
+  const hemisphereLight = new THREE.HemisphereLight();
+  hemisphereLight.color.setHex(LIGHT_DATA.hemisphereLight.hemisphereLight_color);
+  hemisphereLight.groundColor.setHex(LIGHT_DATA.hemisphereLight.hemisphereLight_ground_color);
+  hemisphereLight.intensity = LIGHT_DATA.hemisphereLight.hemisphereLight_intensity;
+  scene.add(hemisphereLight);
+
  }
  
  function createCamera() {
@@ -194,15 +183,16 @@
  function loadObjects() {
    const loader = new GLTFLoader();
    loader.load(CONFIG.Model.FLOOR, function (gltf) {
-     model = gltf.scene;
-     model.traverse((object) => {
-       object.receiveShadow = true;
-       object.castShadow = true;
-     })
-     model.position.set(0, 0, 0);
-     scene.add(model);
+      model = gltf.scene;
+      model.traverse((object) => {
+      object.receiveShadow = true;
+      object.castShadow = true;
+    })
+      gltf.scene.scale.set(1, 1, 1);
+      model.position.set(0, 0, 0);
+      scene.add(model);
    }, undefined, function (e) {
-     console.error(e);
+      console.error(e);
    });
  }
  
@@ -337,7 +327,7 @@
        });
      });
  
-     gltf.scene.position.set(0, -1, 0);
+     gltf.scene.position.set(0, 0, 0);
      gltf.scene.scale.set(1, 1, 1);
      scene.add(gltf.scene);
      highlightedObjects.push(gltf.scene);
@@ -348,7 +338,7 @@
  function createObjects() {
    // SkyBox
    const skyBoxGeo = new THREE.SphereGeometry(5, 32, 32);
-   const skyBoxMaterial = new THREE.MeshBasicMaterial({ color: 0xFEFEFE, side: THREE.DoubleSide, });
+   const skyBoxMaterial = new THREE.MeshLambertMaterial({ color: 0xFEFEFE, side: THREE.DoubleSide, });
    const skyBox = new THREE.Mesh(skyBoxGeo, skyBoxMaterial);
    skyBox.position.set(0, 0, 0);
    skyBox.scale.set(20, 20, 20);
@@ -378,7 +368,7 @@
    scene.background = new THREE.Color(0xffffff);
  
    createCamera();
-   createLight();
+   createLight(selectKukanData);
    createObjects();
    loadObjects();
  
