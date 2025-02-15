@@ -1,7 +1,7 @@
  /* MIT License Copyright © 2010-2024 three.js authors https://github.com/mrdoob/three.js/blob/dev/LICENSE */
- import * as THREE from "https://cdn.kotaroo.work/Three.js/r126/build/three.module.js";
- import { OrbitControls } from "https://cdn.kotaroo.work/Three.js/r126/examples/jsm/controls/OrbitControls.js";
- import { GLTFLoader } from "https://cdn.kotaroo.work/Three.js/r126/examples/jsm/loaders/GLTFLoader.js";
+ import * as THREE from "https://cdn.kotaroo.work/Three.js/r164/build/three.module.js";
+ import { OrbitControls } from "https://cdn.kotaroo.work/Three.js/r164/examples/jsm/controls/OrbitControls.js";
+ import { GLTFLoader } from "https://cdn.kotaroo.work/Three.js/r164/examples/jsm/loaders/GLTFLoader.js";
  import { updateAssetsWindowDiv } from "./assets_info_window.js";
  import { CONFIG } from "../config/config.js";
  
@@ -378,7 +378,6 @@
    rendererSetting();
  
    const canvas = document.getElementById("canvas");
-   canvas.addEventListener("click", handleMouseOpenInfoWindow);
    canvas.appendChild(renderer.domElement);
  
    const menu = document.getElementById("menu");
@@ -386,7 +385,8 @@
      controls.enabled = false;
    });
    canvas.addEventListener("mouseover", (e) => {
-     controls.enabled = true;
+    handleMouseOpenInfoWindow(e);
+    controls.enabled = true;
    });
  
    animate();

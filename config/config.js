@@ -8,7 +8,7 @@ export const CONFIG = {
     MONAPARTY_SERVER_ME: "https://wallet.monaparty.me/_api"
   },
   Model: {
-    KUKAN: "../model/kukan_simple01.glb",
-    FLOOR: "../model/floor01.glb",
+    KUKAN: "../models/kukan_simple01.glb",
+    FLOOR: "../models/floor01.glb",
   }
 }
